@@ -27,7 +27,7 @@ keywords = {
 }
 
 # Controle de instancia
-firstInstance = True
+firstInstance = 1
 
 # Funções -------------------------
 
@@ -105,9 +105,9 @@ def run(bot):
 	messages = chat.getMsgs()
 
 	# Verifica se é a primeira instancia do script
-	if firstInstance == True:
+	if firstInstance == 1 or firstInstance == 2:
 		# Previne o bloqueio das proximas instancias
-		firstInstance = False
+		firstInstance += 1
 
 		# Encerra a função
 		return
