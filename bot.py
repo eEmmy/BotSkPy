@@ -93,7 +93,7 @@ def verifyKeywordsMatch(message):
 
 
 # Eecuta os métodos necessários para o funcionamento do script
-def run(bot):
+def run(bot, oldMessages):
 	# Importa as variaveis
 	global groups
 	global firstInstance
@@ -105,9 +105,9 @@ def run(bot):
 	messages = chat.getMsgs()
 
 	# Verifica se é a primeira instancia do script
-	if firstInstance == 1 or firstInstance == 2:
+	if firstInstance == 1 or firstInstance == 2 or messages == oldMessages:
 		# Previne o bloqueio das proximas instancias
-		firstInstance += 1
+		firstInstance += 0.5
 
 		# Encerra a função
 		return
@@ -153,6 +153,12 @@ print('Iniciado o SkpyBot - 1.0.0')
 print('Analisando mensagens...')
 print('')
 
+# Entra no chat do grupo 1
+chat = bot.chats[groups[1]]
+
+# Recupera as mensagens do grupo
+messages = chat.getMsgs()
+
 # Loop principal
 while True:
-	run(bot)
+	run(bot, messages)
